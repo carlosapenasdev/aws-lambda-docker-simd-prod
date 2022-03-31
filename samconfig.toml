@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "docker-reven"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-12i4h03sgi4rv"
+s3_prefix = "docker-reven"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = ["DockerRevenFunction=652150160070.dkr.ecr.us-east-1.amazonaws.com/dockerreven4b7bbb78/dockerrevenfunctionfddbabebrepo"]

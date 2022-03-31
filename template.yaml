@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  python3.9
+
+  Sample SAM Template for docker-app
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  DockerRevenFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Architectures:
+        - x86_64
+      Timeout: 60
+      MemorySize: 512
+      Policies:
+        - S3WritePolicy:
+            BucketName: bucket-store-blossv1
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: ./src
+      DockerTag: python3.9-v1
+
+Outputs:
+  DockerRevenFunction:
+    Description: "Docker Lambda Function ARN"
+    Value: !GetAtt DockerRevenFunction.Arn
+  DockerRevenFunctionIamRole:
+    Description: "Implicit IAM Role created for Docker function"
+    Value: !GetAtt DockerRevenFunctionRole.Arn
