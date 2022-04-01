@@ -16,7 +16,7 @@ O objetivo final é comparar a performance com diferentes libs de resize e image
 - AWS Sam ([link sobre instalação](https://docs.aws.amazon.com/pt_br/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html))
 -  clonar este repositorio localmente:
 ```bash
-git clone git@github.com:carlossantoswd/aws-lambda-docker-reven.git .
+git clone git@github.com:carlossantoswd/aws-lambda-docker-simd-prod.git .
 ```
 ## 1. Testar a função lambda local
 ```bash
