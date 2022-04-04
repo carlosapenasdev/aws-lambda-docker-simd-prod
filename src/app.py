@@ -16,14 +16,17 @@ class Size:
     self.height = height
     
 def localImg(bktOri, keyFile):
-    localFile           = '/tmp/{}'.format(keyFile)
+    subfolder = keyFile.split('/');
+    file = subfolder[-1]
+
+    localFile           = '/tmp/{}'.format(file)
     s3_client.download_file(bktOri, keyFile, localFile)
     return localFile
 
 def thumbLocal(localFile, keyFile, size):
     dimension = getSize(size)
     local_resized = resize_local(localFile, size, dimension.width, dimension.height)
-    s3_client.upload_file(local_resized, 'bucket-store-blossv1', re.sub(regex, '_'+size+'_', keyFile, 0, re.MULTILINE))
+    s3_client.upload_file(local_resized, 'bucket-store-blossv2', re.sub(regex, '_'+size+'_', keyFile, 0, re.MULTILINE))
     return local_resized
 
 def getSize(size):
@@ -51,7 +54,7 @@ def lambda_handler(event, context):
 
         localFile = localImg(bucket, key)
         
-        s3_client.upload_file(localFile, 'bucket-store-blossv1', key)
+        s3_client.upload_file(localFile, 'bucket-store-blossv2', key)
         s3_client.delete_object(Bucket=bucket, Key=key)
 
         localFile = thumbLocal(localFile, key, 'W')
