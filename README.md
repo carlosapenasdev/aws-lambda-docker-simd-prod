@@ -53,7 +53,7 @@ curl -L https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-
 ```
 -  clonar este repositorio localmente:
 ```bash
-git clone https://github.com/carlossantoswd/aws-lambda-docker-simd-prod.git lambda_prod \
+git clone https://github.com/carlosapenasdev/aws-lambda-docker-simd-prod.git lambda_prod \
 && cd lambda_prod
 ```
 ## 1. Configurar Função
